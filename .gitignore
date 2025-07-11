@@ -1,14 +1,14 @@
-# Genel node_modules
+
 /node_modules
 
-# Build çıktıları
+
 /backend/node_modules
 /frontend/node_modules
 /frontend/build
 /frontend/.env.local
 /backend/.env
 
-# Diğer IDE/OS dosyaları
+
 .DS_Store
 .env
 .idea/
