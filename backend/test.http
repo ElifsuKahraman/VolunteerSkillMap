@@ -1,0 +1,26 @@
+POST http://localhost:5000/api/activities
+Content-Type: application/json
+
+{
+  "description": "Lösemili çocuklar için kitap okuma etkinliği düzenledim."
+}
+
+
+### Kullanıcı oluşturma
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+  "name": "Elifsu Kahraman",
+  "email": "elifsu@example.com",
+  "activities": ["<faaliyetId>"]
+}
+
+
+###
+POST http://localhost:5000/api/users/686bb028d0bddce43f213517/add-activity
+Content-Type: application/json
+
+{
+  "description": "Depremzedeler için yardım organizasyonunda görev aldım."
+}
