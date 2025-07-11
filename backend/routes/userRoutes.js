@@ -37,16 +37,15 @@ router.post("/", async (req, res) => {
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    // E-posta daha önce kullanılmış mı kontrol et
+   
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: "Bu e-posta ile zaten bir kullanıcı var." });
     }
-    // Şifreyi hash'le
+    
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ name, email, password: hashedPassword });
     await user.save();
-    // Kayıt sonrası otomatik giriş için JWT token oluştur
     const token = jwt.sign({ userId: user._id, email: user.email }, JWT_SECRET, { expiresIn: "1d" });
     res.status(201).json({ message: "Kayıt başarılı!", token, user: { id: user._id, name: user.name, email: user.email } });
   } catch (error) {
@@ -65,7 +64,7 @@ router.post("/login", async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ error: "Şifre yanlış." });
     }
-    // JWT token oluştur
+   
     const token = jwt.sign({ userId: user._id, email: user.email }, JWT_SECRET, { expiresIn: "1d" });
     res.json({ message: "Giriş başarılı!", token, user: { id: user._id, name: user.name, email: user.email } });
   } catch (error) {
