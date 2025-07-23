@@ -124,4 +124,38 @@ router.get("/:userId/activities", auth, async (req, res) => {
 });
 
 
+router.get("/:userId/skill-analysis", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId).populate("activities");
+    if (!user) return res.status(404).json({ error: "Kullanıcı bulunamadı" });
+
+  
+    const skillCounts = {};
+    user.activities.forEach(act => {
+      (act.skills || []).forEach(skill => {
+        skillCounts[skill] = (skillCounts[skill] || 0) + 1;
+      });
+    });
+
+    
+    const sortedSkills = Object.entries(skillCounts).sort((a, b) => b[1] - a[1]);
+    const top_skills = sortedSkills.slice(0, 2).map(([skill]) => skill);
+    const weak_skills = sortedSkills.slice(-2).map(([skill]) => skill);
+
+    
+    const suggestions = weak_skills.map(skill => `${skill} yetkinliğini geliştirmek için ilgili faaliyetler ekleyebilirsiniz.`);
+
+    res.json({
+      top_skills,
+      weak_skills,
+      all_skill_counts: skillCounts,
+      suggestions
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Analiz sırasında hata oluştu" });
+  }
+});
+
+
+
 module.exports = router;
