@@ -1,7 +1,26 @@
 {
-  "dependencies": {
-    "axios": "^1.10.0",
-    "bcryptjs": "^3.0.2",
-    "jsonwebtoken": "^9.0.2"
+  "name": "volunteer-skill-map",
+  "version": "1.0.0",
+  "description": "Gönüllülük Yetenek Haritası Platformu",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": [
+    "volunteer",
+    "skills",
+    "analytics",
+    "react",
+    "nodejs"
+  ],
+  "author": "Elifsu Kahraman",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
 }
