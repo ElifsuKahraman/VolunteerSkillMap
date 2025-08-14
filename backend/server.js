@@ -1,3 +1,4 @@
+// Gerekli kütüphaneleri yükle
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -9,13 +10,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware'ları ekle
-// CORS ayarları - Frontend'e erişim izni
+// CORS ayarları - Geçici olarak herkese açık
 app.use(cors({
-  origin: [
-    "http://localhost:3000", // Local development
-    "https://cosmic-tartufo-dc129b.netlify.app" // Netlify production
-  ],
-  credentials: true
+  origin: "*", // Geçici: Tüm domainlere izin
+  credentials: false
 }));
 app.use(express.json()); // JSON verilerini okuyabilmek için
 
