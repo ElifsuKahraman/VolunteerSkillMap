@@ -36,41 +36,40 @@ def analyze_text_for_skills(text):
         
         print(f'Analiz edilen metin: {text[:100]}{"..." if len(text) > 100 else ""}')
         
-        # Metni pipeline'a gönder
+        
         analyzed_doc = nlp_pipeline(text.lower())
         
-        # Bulunan yetkinlikler
+     
         found_skills = set()
         
-        # Her cümleyi incele
+      
         for sentence in analyzed_doc.sentences:
-            # Kelimelerin lemma (kök) hallerini al
+           
             word_lemmas = [word.lemma for word in sentence.words]
-            # Kelimelerin normal hallerini al
+           
             word_tokens = [word.text for word in sentence.words]
             
-            print(f'Kelime kökleri: {word_lemmas[:10]}')  # İlk 10 kökü göster
-            print(f'Kelimeler: {word_tokens[:10]}')  # İlk 10 kelimeyi göster
+            print(f'Kelime kökleri: {word_lemmas[:10]}')  
+            print(f'Kelimeler: {word_tokens[:10]}')  
             
-            # Takım çalışması yetkinliği
+         
             team_keywords = ['takım', 'ekip', 'grup', 'beraber', 'birlikte', 'işbirliği', 'koordinasyon']
             if any(keyword in word_lemmas or keyword in word_tokens for keyword in team_keywords):
                 found_skills.add('Takım Çalışması')
                 print("✓ Takım Çalışması yetkinliği tespit edildi")
-            
-            # Liderlik yetkinliği
+           
             leadership_keywords = ['lider', 'yönet', 'koordine', 'organize', 'yönlendirme', 'rehberlik', 'sorumlu']
             if any(keyword in word_lemmas or keyword in word_tokens for keyword in leadership_keywords):
                 found_skills.add('Liderlik')
                 print("✓ Liderlik yetkinliği tespit edildi")
             
-            # İletişim yetkinliği
+          
             communication_keywords = ['iletişim', 'konuş', 'anlat', 'sunum', 'bilgilendirme', 'paylaş', 'aktarma']
             if any(keyword in word_lemmas or keyword in word_tokens for keyword in communication_keywords):
                 found_skills.add('İletişim')
                 print("✓ İletişim yetkinliği tespit edildi")
             
-            # Problem çözme yetkinliği
+        
             problem_solving_keywords = ['problem', 'çöz', 'analiz', 'araştır', 'çözüm', 'strateji', 'yaklaşım']
             if any(keyword in word_lemmas or keyword in word_tokens for keyword in problem_solving_keywords):
                 found_skills.add('Problem Çözme')
