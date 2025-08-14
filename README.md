@@ -307,33 +307,9 @@ mongoose.connect(uri, {
 });
 ```
 
----
 
-## 📞 İletişim ve Destek
 
-- **Geliştirici**: [Your Name]
-- **E-posta**: your.email@example.com
-- **GitHub**: https://github.com/[username]/volunteer-skill-map
-- **Demo**: https://volunteer-skill-map.vercel.app (yakında)
 
----
 
-## 📄 Lisans
 
-Bu proje **MIT Lisansı** altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
----
-
-## 🙏 Teşekkürler
-
-- **OpenAI** - GPT-3.5 Turbo API
-- **MongoDB Atlas** - Cloud Database
-- **Stanza NLP** - Turkish Language Processing
-- **React Community** - UI Framework
-- **Node.js Community** - Backend Runtime
-
----
-
-*Son güncelleme: 17 Temmuz 2024*  
-*Versiyon: 1.0.0*  
-*Teslim: İlk Özellik Geliştirme ve AI Entegrasyonu ✅* 
